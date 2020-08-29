@@ -1,24 +1,70 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column       | Type   | Options     |
+| ------------ | ------ | ----------- |
+| store_number | string | null: false |
+| email        | string | null: false |
+| password     | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :inventories
+- has_many :sales
+- has_many :comments
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| name    | string     | null: false                    |
+| margin  | integer    | null: false                    |
+| user_id | references | null: false, foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_many :inventories
 
-* Services (job queues, cache servers, search engines, etc.)
+## inventories テーブル
 
-* Deployment instructions
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| order   | integer    |                                |
+| use     | integer    |                                |
+| stock   | integer    |                                |
+| date    | date       | null: false                    |
+| item_id | references | null: false, foreign_key: true |
+| user_id | references | null: false, foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
+## sales テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| plan    | integer    | null: false                    |
+| actual  | integer    |                                |
+| date    | date       | null: false                    |
+| user_id | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+
+## comments テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| text    | text       |                                |
+| date    | date       | null: false                    |
+| user_id | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
