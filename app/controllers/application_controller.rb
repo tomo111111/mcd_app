@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:store_number])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:store_name,:store_number])
   end
 end

@@ -9,6 +9,14 @@
         <%= devise_error_messages!%>
         <div class='field'>
           <div class='field-label'>
+            <%= f.label :store_name%>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field :store_name, autofocus: true%>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
             <%= f.label :store_number%>
           </div>
           <div class='field-input'>

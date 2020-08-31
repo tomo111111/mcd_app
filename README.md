@@ -4,6 +4,7 @@
 
 | Column       | Type   | Options     |
 | ------------ | ------ | ----------- |
+| store_name   | string | null: false |
 | store_number | string | null: false |
 | email        | string | null: false |
 | password     | string | null: false |
