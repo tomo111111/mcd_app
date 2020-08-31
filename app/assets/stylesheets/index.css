@@ -1,0 +1,7 @@
+table{
+  width: 100%;
+}
+th,td{
+  width: 5vw;
+  border:solid 2px #aaaaaa;
+}
