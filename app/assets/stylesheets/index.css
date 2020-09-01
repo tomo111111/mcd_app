@@ -1,7 +1,17 @@
 table{
   width: 100%;
+  text-align: center;
 }
 th,td{
   width: 5vw;
   border:solid 2px #aaaaaa;
+}
+.item_name{
+  width: 10vw;
+}
+.order_colmun{
+  background-color: lightgray;
+}
+.use_colmun{
+  background-color: whitesmoke;
 }
