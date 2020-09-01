@@ -1,4 +1,33 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
-お疲れ様です！<%= current_user.store_name %>さん！
-<%= link_to "ログアウト",destroy_user_session_path,method: :delete %>
+<div class="container mt-5">
+  <table>
+
+  <tr>
+    <td rowspan="2" colspan="2">
+    <% if (@starting_point).day != ((@starting_point).day + 14) %>
+    <%= (@starting_point).month %>月/<%= (@starting_point).month + 1 %>月
+    <%else%>
+    <%= (@starting_point).month %>月 
+    <%end%>
+    </td>
+    <% 14.times do |i| %>
+      <td><%= (@starting_point + i).day  %></td>
+    <%end%>
+  </tr>
+
+    <tr>
+    <% 14.times do |i| %>
+      <% if (@starting_point + i).wday == 0  %>
+        <td class="bg-danger"><%= @day_of_week[(@starting_point + i).wday]  %></td>
+      <%elsif (@starting_point + i).wday == 6 %>
+        <td class="bg-primary"><%= @day_of_week[(@starting_point + i).wday]  %></td>
+      <%else%>
+        <td><%= @day_of_week[(@starting_point + i).wday]  %></td>
+      <%end%>
+    <%end%>
+  </tr>
+
+  <% @items.each do |item| %>
+    <%= render partial:"inventory",locals:{item:item} %>
+  <% end %>
+</table>
+</div>

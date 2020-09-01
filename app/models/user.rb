@@ -8,5 +8,6 @@ class User < ApplicationRecord
     validates :store_number, format:{with:/\A\d{6}/, message:"6桁の数字を入力してください。"}
   end
   
+  has_many :items
   
 end

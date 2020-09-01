@@ -4,12 +4,41 @@
     <title>McdApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
+  <div class="wrapper">
+    <%= link_to root_path do %>
+      <%= image_tag "logo.png", class:"top_logo" %>
+    <%end%>
+    <div class="top_messages">
+      <div class="top_message">お疲れ様です！</div>
+      <% if user_signed_in? %>
+      <div class="top_message"><%= current_user.store_name %>さん</div>
+      <%end%>
+    </div>
+    <div class="top_links">
+      <%= link_to destroy_user_session_path,method: :delete,class:"top_link" do %>
+        <i class="fas fa-edit">実績入力</i>
+      <%end%>
+      <%= link_to destroy_user_session_path,method: :delete,class:"top_link" do %>
+        <i class="fas fa-funnel-dollar">セールス予測</i>
+      <%end%>
+      <%= link_to destroy_user_session_path,method: :delete,class:"top_link" do %>
+        <i class="fas fa-cog">各種設定</i>
+      <%end%>
+      <%= link_to destroy_user_session_path,method: :delete,class:"top_link" do %>
+        <i class="fas fa-sign-out-alt">ログアウト</i>
+      <%end%>
+
+    </div>
+  </div>
+
     <%= yield %>
   </body>
 </html>

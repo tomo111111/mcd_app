@@ -1,0 +1,30 @@
+.wrapper{
+  height: 100px;
+  width: 100vw;
+  background-color: #007bff;
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.top_logo{
+  height: 70px;
+  margin: 0 15px;
+  
+}
+.top_messages{ 
+}
+.top_message{
+  color: white;
+  font-size: 20px;
+}
+.top_links{
+  position: absolute;
+  right: 0px;
+  margin: 0 20px;
+}
+.top_link{
+  color: white;
+  margin-left: 10px;
+  font-size: 20px;
+}
