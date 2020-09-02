@@ -9,5 +9,5 @@ class User < ApplicationRecord
   end
   
   has_many :items
-  
+  has_many :sales
 end
