@@ -1,0 +1,29 @@
+
+<% if Sale.find_by(date: Date.today.since(num.month)) %>
+  <%= link_to "編集",edit_sale_path(1) %>
+<%else%>
+  <%= link_to "新規登録",new_sale_path %>
+<%end%>
+
+
+<table>
+
+  <tr>
+    <td ><%= Date.today.since(num.month).month %>月</td>
+    <td ></td>
+    <td >ProductSales</td>
+  </tr>
+
+  <% Date.today.since(num.month).end_of_month.day.times do |i| %>
+    <tr>
+      <td><%= i += 1 %></td>
+      <td><%= @day_of_week[Date.new(Date.today.since(num.month).year,Date.today.since(num.month).month,i).wday] %></td>
+      <td>
+        <% if Sale.find_by(date:Date.new(Date.today.since(num.month).year,Date.today.since(num.month).month,i)) %>
+          <%= Sale.find_by(date:Date.new(Date.today.since(num.month).year,Date.today.since(num.month).month,i)).plan %>
+        <%end%>
+      </td>
+    </tr>
+  <%end%>
+
+</table>

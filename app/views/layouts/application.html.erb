@@ -26,7 +26,7 @@
       <%= link_to destroy_user_session_path,method: :delete,class:"top_link" do %>
         <i class="fas fa-edit">実績入力</i>
       <%end%>
-      <%= link_to destroy_user_session_path,method: :delete,class:"top_link" do %>
+      <%= link_to sales_path,class:"top_link" do %>
         <i class="fas fa-funnel-dollar">セールス予測</i>
       <%end%>
       <%= link_to destroy_user_session_path,method: :delete,class:"top_link" do %>
@@ -38,7 +38,8 @@
 
     </div>
   </div>
-
+  <div class="container my-5">
     <%= yield %>
+  </div>
   </body>
 </html>
