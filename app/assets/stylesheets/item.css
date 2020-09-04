@@ -15,3 +15,21 @@ th,td{
 .use_colmun{
   background-color: whitesmoke;
 }
+
+
+.new{
+  display: flex;
+  margin-top: 50px;
+}
+.new_field{
+  margin: 0 20px 10px 0;
+}
+.btn_setting{
+  height: calc(100% - 10px);
+}
+.destroy{
+  margin: 30px 0 0 137px;
+}
+.btn_destroy{
+  margin-left: 16px;
+}
