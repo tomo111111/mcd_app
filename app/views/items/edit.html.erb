@@ -1,0 +1,22 @@
+<%= form_with model:@item,local:true do |f|%>
+  <div class="item_setting">
+    <table>
+      <tr>
+        <td>品目名</td>
+        <% @items.each do |item| %>
+          <td><%= item.name %></td>
+        <%end%>    
+      </tr>
+
+      <tr>
+        <td>基準在庫数</td>
+        <% @items.each do |item| %>
+          <td><%= f.text_field :margin, value:item.margin,class:"fieid_size" %></td>
+        <%end%>
+      </tr>
+    </table>
+    <div>
+      <%= f.submit "編集", class:"btn btn-secondary btn-sm btn_setting1" %>
+    </div>
+  </div>
+<%end%>

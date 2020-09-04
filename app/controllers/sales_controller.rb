@@ -21,11 +21,6 @@ class SalesController < ApplicationController
     @sales = SaleCollection.new
   end
 
-  # def update_sales
-  #   sales = Sale.where(date:params[:sales])
-  #   sales.update(sales_params)
-  # end
-
   private
 
   def sales_params
