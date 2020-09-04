@@ -1,0 +1,45 @@
+<div class="item_setting">
+  <table>
+    <tr>
+      <td>品目名</td>
+      <% @items.each do |item| %>
+        <td><%= item.name %></td>
+      <%end%>    
+    </tr>
+
+    <tr>
+      <td>基準在庫数</td>
+      <% @items.each do |item| %>
+        <td><%= item.margin %></td>
+      <%end%>
+    </tr>
+  </table>
+  <div>
+  <%= link_to do %>
+  <button class="btn btn-primary btn-sm btn_setting1">編集</button>
+  <%end%>
+  </div>
+</div>
+
+<%= form_with model:@item,local:true do |f|%>
+<div class="new">
+  <div>
+    <div class="new_field">
+      品　目　名：<%= f.text_field :name %>
+    </div>
+    <div class="new_field">
+      基準在庫数：<%= f.text_field :margin %>
+    </div>
+  </div>
+  <div>
+    <%= f.submit "登録", class:"btn btn-primary btn-sm btn_setting2" %>
+  </div>
+</div>
+<%end%>
+
+<div class="destroy">
+<%= form_with url:item_path(:id),method: :delete,local:true do |f|%>
+  <%= f.collection_select :name, Item.all, :id, :name, include_blank: "---" %>
+  <%= f.submit "削除", class:"btn btn-primary btn-sm btn_destroy" %>
+  <%end%>
+</div>

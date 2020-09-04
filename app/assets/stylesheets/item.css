@@ -1,0 +1,48 @@
+table{
+  width: 100%;
+  text-align: center;
+}
+th,td{
+  width: 5vw;
+  border:solid 2px #aaaaaa;
+}
+.item_name{
+  width: 10vw;
+}
+.order_colmun{
+  background-color: lightgray;
+}
+.use_colmun{
+  background-color: whitesmoke;
+}
+
+.item_setting{
+  display: flex;
+}
+.fieid_size{
+width: 60px;
+}
+.btn_setting1{
+  height: 100%;
+  width: 46px;
+  margin-left: 20px;
+}
+.new{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+  
+}
+.new_field{
+  margin: 0 20px 10px 0;
+}
+.btn_setting2{
+  height: calc(100% - 10px);
+}
+.destroy{
+  margin: 30px 0 0 0;
+  text-align: right;
+}
+.btn_destroy{
+  margin-left: 16px;
+}
