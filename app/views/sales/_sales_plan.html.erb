@@ -1,0 +1,35 @@
+<% this_month = Date.today.since(num.month) %>
+<div class="mb-2 text-center">
+  <% if Sale.find_by(date: this_month)%>
+    <%= form_with url:edit_sales_sales_path,method: :get, local: true do |f| %>
+      <%= f.text_field :this_month, value: this_month, class:"d-none" %>
+      <%= f.submit "　編集　",class:"btn btn-primary"%>
+    <%end%>
+  <%else%>
+    <%= form_with url:new_sale_path, method: :get,local: true do |f| %>
+      <%= f.text_field :this_month, value: this_month, class:"d-none" %>
+      <%= f.submit "新規登録",class:"btn btn-primary" %>
+    <%end%>
+  <%end%>
+</div>
+
+
+  <table>
+    <tr>
+      <td ><%= this_month.month %>月</td>
+      <td ></td>
+      <td >ProductSales</td>
+    </tr>
+    <% this_month.end_of_month.day.times do |i| %>
+      <tr>
+        <td><%= i += 1 %></td>
+        <% this_day = Date.new(Date.today.since(num.month).year,Date.today.since(num.month).month,i) %>
+        <td><%= @day_of_week[this_day.wday] %></td>
+        <td>
+          <% if Sale.find_by(date:this_day) %>
+            <%= Sale.find_by(date:this_day).plan %>
+          <%end%>
+        </td>
+      </tr>
+    <%end%>
+  </table>
