@@ -18,6 +18,7 @@ class InventoriesController < ApplicationController
       Inventory.create(order:params["order_#{i}".to_sym],use:params["use_#{i}".to_sym],stock:params["stock_#{i}".to_sym],date:params[:date],item_id:item.id,user_id:current_user.id)
       i += 1
     end
+    flash[:notice] = "登録しました"
     redirect_to inventories_path
   end
 
@@ -30,12 +31,12 @@ class InventoriesController < ApplicationController
     @items.each do |item|
       item.inventories.each do |inventory|
         if inventory.date == Date.parse(params[:date])
-          binding.pry
-        inventory.update(order:params["order_#{i}".to_sym],use:params["use_#{i}".to_sym],stock:params["stock_#{i}".to_sym],date:params[:date],item_id:item.id,user_id:current_user.id)
+          inventory.update(order:params["order_#{i}".to_sym],use:params["use_#{i}".to_sym],stock:params["stock_#{i}".to_sym],date:params[:date],item_id:item.id,user_id:current_user.id)
         end
       end
       i += 1
     end
+    flash[:notice] = "登録しました"
     redirect_to inventories_path
   end
 

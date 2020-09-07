@@ -1,25 +1,27 @@
-<div class="item_setting">
-  <table>
-    <tr>
-      <td>品目名</td>
-      <% @items.each do |item| %>
-        <td><%= item.name %></td>
-      <%end%>    
-    </tr>
+<%= form_with url:item_path(0),method: :patch,local:true do |f|%>
+  <div class="item_setting">
+    <table>
+      <tr>
+        <td>品目名</td>
+        <% @items.each do |item| %>
+          <td><%= item.name %></td>
+        <%end%>    
+      </tr>
 
-    <tr>
-      <td>基準在庫数</td>
-      <% @items.each do |item| %>
-        <td><%= item.margin %></td>
-      <%end%>
-    </tr>
-  </table>
-  <div>
-  <%= link_to do %>
-  <button class="btn btn-primary btn-sm btn_setting1">編集</button>
-  <%end%>
+      <tr>
+        <td>基準在庫数</td>
+        <% i = 0 %>
+        <% @items.each do |item| %>
+        <td><%= f.text_field "margin_#{i}".to_sym,value:item.margin,class:"input_inventory" %></td>
+          <% i += 1 %>
+        <%end%>
+      </tr>
+    </table>
+    <div>
+    <%= f.submit "登録",class:"btn btn-primary btn-sm btn_setting1" %>
+    </div>
   </div>
-</div>
+<%end%>
 
 <%= form_with model:@item,local:true do |f|%>
 <div class="new">
