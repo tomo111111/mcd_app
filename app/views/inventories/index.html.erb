@@ -1,0 +1,83 @@
+<%= render "calendar" %>
+<%= @date %>
+<% if @inventory_this.present? %>
+  <%= form_with url:inventory_path(0),method: :patch,local: true do |f| %>
+    <table>
+      <tr>
+        <td>品目名</td>
+        <% @inventory_this.each do |this| %>
+          <td><%= this.item.name %></td>
+        <%end%>
+      </tr>
+
+      <tr>
+        <td>納品数</td>
+        <% i = 0 %>
+        <% @inventory_this.each do |this| %>
+          <td><%= f.text_field "order_#{i}".to_sym,value:this.order,class:"input_inventory" %></td>
+          <% i += 1 %>
+        <%end%>
+      </tr>
+    
+      <tr>
+        <td>使用数</td>
+        <% i = 0 %>
+        <% @inventory_this.each do |this| %>
+          <td><%= f.text_field "use_#{i}".to_sym,value:this.use,class:"input_inventory" %></td>
+          <% i += 1 %>
+        <%end%>
+      </tr>
+
+      <tr>
+        <td>在庫数</td>
+        <% i = 0 %>
+        <% @inventory_this.each do |this| %>
+          <td><%= f.text_field "stock_#{i}".to_sym,value:this.stock,class:"input_inventory" %></td>
+          <% i += 1 %>
+        <%end%>
+      </tr>
+    </table>
+    <%= f.text_field :date, value:@date, class:"hidden" %>
+    <%= f.submit "登録",class:"btn btn-primary" %>
+  <%end%>
+<%else%>
+  <%= form_with model:@inventory,local: true do |f| %>
+    <table>
+      <tr>
+        <td>品目名</td>
+        <% @items.each do |item| %>
+          <td><%= item.name %></td>
+        <%end%>
+      </tr>
+
+      <tr>
+        <td>納品数</td>
+        <% i = 0 %>
+        <% @items.each do |item| %>
+          <td><%= f.text_field "order_#{i}".to_sym,class:"input_inventory" %></td>
+          <% i += 1 %>
+        <%end%>
+      </tr>
+    
+      <tr>
+        <td>使用数</td>
+        <% i = 0 %>
+        <% @items.each do |item| %>
+          <td><%= f.text_field "use_#{i}".to_sym,class:"input_inventory" %></td>
+          <% i += 1 %>
+        <%end%>
+      </tr>
+
+      <tr>
+        <td>在庫数</td>
+        <% i = 0 %>
+        <% @items.each do |item| %>
+          <td><%= f.text_field "stock_#{i}".to_sym,class:"input_inventory" %></td>
+          <% i += 1 %>
+        <%end%>
+      </tr>
+    </table>
+    <%= f.text_field :date, value:@date, class:"hidden" %>
+    <%= f.submit "登録",class:"btn btn-primary" %>
+  <%end%>
+<%end%>

@@ -10,5 +10,5 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :sales
-  has_many :inventries
+  has_many :inventories
 end

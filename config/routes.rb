@@ -11,6 +11,6 @@ Rails.application.routes.draw do
       # post 'update_sales'
     end
   end
-  resources :inventries, only:[:index,:new,:create]
+  resources :inventories, only:[:index,:new,:create,:edit,:update]
   
 end

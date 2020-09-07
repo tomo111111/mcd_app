@@ -1,4 +1,4 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_many :inventries
+  has_many :inventories
 end
