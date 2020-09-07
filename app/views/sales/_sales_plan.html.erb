@@ -1,20 +1,11 @@
 <% this_month = Date.today.since(num.month) %>
-<div class="mb-2 text-center">
-  <% if Sale.find_by(date: this_month)%>
-    <%= form_with url:edit_sales_sales_path,method: :get, local: true do |f| %>
-      <%= f.text_field :this_month, value: this_month, class:"d-none" %>
-      <%= f.submit "　編集　",class:"btn btn-primary"%>
-    <%end%>
-  <%else%>
-    <%= form_with url:new_sale_path, method: :get,local: true do |f| %>
-      <%= f.text_field :this_month, value: this_month, class:"d-none" %>
-      <%= f.submit "新規登録",class:"btn btn-primary" %>
-    <%end%>
-  <%end%>
-</div>
 
+<%# その月のレコードが一つもないとき（新規登録時） %>
+<% if Sale.where(date:this_month.beginning_of_month..this_month.end_of_month).present? %>
+  <%= form_with url:sale_path(0),method: :patch, local: true do |f| %>
+  <%= f.submit "登録",class:"btn btn-primary mb-2" %>
 
-  <table>
+    <table>
     <tr>
       <td ><%= this_month.month %>月</td>
       <td ></td>
@@ -26,10 +17,47 @@
         <% this_day = Date.new(Date.today.since(num.month).year,Date.today.since(num.month).month,i) %>
         <td><%= @day_of_week[this_day.wday] %></td>
         <td>
-          <% if Sale.find_by(date:this_day) %>
-            <%= Sale.find_by(date:this_day).plan %>
+          <% sale = Sale.find_by(date:this_day) %>
+          <% if sale %>
+            <%= f.text_field "plan_#{i}".to_sym,value:sale.plan,class:"input_inventory" %>
+          <% else %>
+            <%= f.text_field "plan_#{i}".to_sym,class:"input_inventory" %>
           <%end%>
+          <%= f.text_field "date_#{i}",class:"hidden",value:Date.new(this_month.year,this_month.month,i) %>
         </td>
       </tr>
     <%end%>
   </table>
+
+  <%end%>
+  <%# その月のレコードがあるとき %>
+<% else %>
+  <%= form_with url:sales_path, local: true do |f| %>
+  <%= f.submit "登録",class:"btn btn-primary mb-2" %>
+
+    <table>
+    <tr>
+      <td ><%= this_month.month %>月</td>
+      <td ></td>
+      <td >ProductSales</td>
+    </tr>
+    <% this_month.end_of_month.day.times do |i| %>
+      <tr>
+        <td><%= i += 1 %></td>
+        <% this_day = Date.new(Date.today.since(num.month).year,Date.today.since(num.month).month,i) %>
+        <td><%= @day_of_week[this_day.wday] %></td>
+        <td>
+          <% sale = Sale.find_by(date:this_day) %>
+          <% if sale %>
+            <%= f.text_field "plan_#{i}".to_sym,value:sale.plan,class:"input_inventory" %>
+          <% else %>
+            <%= f.text_field "plan_#{i}".to_sym,class:"input_inventory" %>
+          <%end%>
+          <%= f.text_field "date_#{i}",class:"hidden",value:Date.new(this_month.year,this_month.month,i) %>
+        </td>
+      </tr>
+    <%end%>
+  </table>
+
+  <%end%>
+<%end%>

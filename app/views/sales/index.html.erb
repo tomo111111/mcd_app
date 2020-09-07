@@ -1,13 +1,7 @@
 <div class="sales_plans">
-
-  <div class="sales_plan">
-      <% @num = 0 %>
-    <%= render partial:"sales_plan",locals:{num:@num,repeat:@repeat,j:@j} %>
-  </div>
-
-  <div class="sales_plan">
-      <% @num = 1 %>
-    <%= render partial:"sales_plan",locals:{num:@num,repeat:@repeat,j:@j} %>
-  </div>
-
+  <% 2.times do |i| %>
+    <div class="sales_plan">
+      <%= render partial:"sales_plan",locals:{num:i} %>
+    </div>
+  <%end%>
 </div>

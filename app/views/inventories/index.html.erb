@@ -1,5 +1,6 @@
 <%= render "calendar" %>
 <%= @date %>
+<% if @date %>
 <% if @inventory_this.present? %>
   <%= form_with url:inventory_path(0),method: :patch,local: true do |f| %>
     <table>
@@ -80,4 +81,5 @@
     <%= f.text_field :date, value:@date, class:"hidden" %>
     <%= f.submit "登録",class:"btn btn-primary" %>
   <%end%>
+<%end%>
 <%end%>
