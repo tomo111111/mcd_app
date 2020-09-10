@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 2020_09_04_124825) do
 
   create_table "inventories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "order"
-    t.integer "use"
-    t.integer "stock"
+    t.float "order"
+    t.float "use"
+    t.float "stock"
     t.date "date", null: false
     t.bigint "item_id", null: false
     t.bigint "user_id", null: false

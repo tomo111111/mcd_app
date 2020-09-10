@@ -1,8 +1,15 @@
 <%= render "calendar" %>
+<% sale = Sale.find_by(date:@date,user_id:current_user.id) %>
+<%= form_with url:inventory_path(0),method: :patch,local: true do |f| %>
+<% if sale %>
+実績：<%= f.text_field :actual,value:sale.actual %>
+<%else%>
+実績：<%= f.text_field :actual%>
+<%end%>
 <%= @date %>
 <% if @date %>
 <% if @inventory_this.present? %>
-  <%= form_with url:inventory_path(0),method: :patch,local: true do |f| %>
+  
     <table>
       <tr>
         <td>品目名</td>

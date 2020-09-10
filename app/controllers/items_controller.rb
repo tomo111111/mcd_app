@@ -2,31 +2,37 @@ class ItemsController < ApplicationController
   
   def index
     @starting_point = Date.today - 7
-    @items = Item.all
+    @items = Item.where(user_id:current_user.id)
   end
 
   def new
-    @items = Item.all
+    @items = Item.where(user_id:current_user.id)
     @item = Item.new
   end
 
   def create
-    Item.create(item_params)
-    flash[:notice] = "新規アイテム（#{params[:item][:name]}）を登録しました"
-    redirect_to new_item_path
+    @items = Item.where(user_id:current_user.id)
+    item =  Item.new(item_params)
+    if item.save
+      flash[:notice] = "新規アイテム（#{params[:item][:name]}）を登録しました"
+      redirect_to new_item_path
+    else
+      @item = Item.new
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    items = Item.all
+    items = Item.where(user_id:current_user.id)
     i = 0
     items.each do |item|
       item.update(margin:params["margin_#{i}".to_sym])
       i += 1
     end
-    flash[:notice] = "基準在庫数を登録しました"
+    flash[:notice] = "基準在庫数を更新しました"
     redirect_to new_item_path
   end
 
@@ -37,10 +43,10 @@ class ItemsController < ApplicationController
     redirect_to new_item_path
   end
 
-private
+  private
 
-def item_params
-  params.require(:item).permit(:name,:margin).merge(user_id:current_user.id)
-end
+  def item_params
+    params.require(:item).permit(:name,:margin).merge(user_id:current_user.id)
+  end
 
 end

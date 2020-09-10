@@ -5,7 +5,6 @@ class SalesController < ApplicationController
   def new
     @sale = Sale.new
     @this_month = params[:this_month].to_date
-    # @sales = SaleCollection.new
   end
 
   def create
@@ -14,12 +13,6 @@ class SalesController < ApplicationController
     end
     flash[:notice] = "#{Date.parse(params[:date_1]).month}月のセールスプランを登録しました"
     redirect_to sales_path
-    # @sales = SaleCollection.new(sales_params)
-    # if @sales.save
-    #   redirect_to sales_path
-    # else
-    #   render :new
-    # end
   end
 
   def edit
@@ -33,14 +26,4 @@ class SalesController < ApplicationController
     redirect_to sales_path
   end
 
-  # def edit_sales
-  #   @this_month = params[:this_month].to_date
-  #   @sales = SaleCollection.new
-  # end
-
-  # private
-
-  # def sales_params
-  #   params.require(:sales)
-  # end
 end

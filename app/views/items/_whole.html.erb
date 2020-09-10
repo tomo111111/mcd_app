@@ -1,18 +1,19 @@
+<% inventories = Inventory.where(date:@starting_point..@starting_point + 13,item_id:item.id,user_id:current_user.id) %>
 <tr>
   <td rowspan="3" class="item_name"><%= item.name %> </td>
   <td>納品</td>
-  <% 14.times do |i| %>
-    <td class="order_colmun"><%= "fuga" %></td>
+  <% inventories.each do |inventory| %>
+    <td class="order_colmun"><%= inventory.order %></td>
   <%end%>
   <tr>
     <td>使用</td>
-    <% 14.times do |i| %>
-      <td class="use_colmun"><%= "fuga" %></td>
+    <% inventories.each do |inventory| %>
+      <td class="use_colmun"><%= inventory.use %></td>
     <%end%>
   </tr>
   <tr><td>在庫</td>
-    <% 14.times do |i| %>
-      <td class="stock_colmun"><%= "fuga" %></td>
+    <% inventories.each do |inventory| %>
+      <td class="stock_colmun"><%= inventory.stock %></td>
     <%end%>
   </tr>    
 </tr>

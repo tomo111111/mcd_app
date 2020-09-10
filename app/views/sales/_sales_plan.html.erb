@@ -1,7 +1,7 @@
 <% this_month = Date.today.since(num.month) %>
 
 <%# その月のレコードが一つもないとき（新規登録時） %>
-<% if Sale.where(date:this_month.beginning_of_month..this_month.end_of_month).present? %>
+<% if Sale.where(date:this_month.beginning_of_month..this_month.end_of_month,user_id:current_user.id).present? %>
   <%= form_with url:sale_path(0),method: :patch, local: true do |f| %>
   <%= f.submit "登録",class:"btn btn-primary mb-2" %>
 
@@ -17,7 +17,7 @@
         <% this_day = Date.new(Date.today.since(num.month).year,Date.today.since(num.month).month,i) %>
         <td><%= @day_of_week[this_day.wday] %></td>
         <td>
-          <% sale = Sale.find_by(date:this_day) %>
+          <% sale = Sale.find_by(date:this_day,user_id:current_user.id) %>
           <% if sale %>
             <%= f.text_field "plan_#{i}".to_sym,value:sale.plan,class:"input_inventory" %>
           <% else %>
@@ -47,7 +47,7 @@
         <% this_day = Date.new(Date.today.since(num.month).year,Date.today.since(num.month).month,i) %>
         <td><%= @day_of_week[this_day.wday] %></td>
         <td>
-          <% sale = Sale.find_by(date:this_day) %>
+          <% sale = Sale.find_by(date:this_day,user_id:current_user.id) %>
           <% if sale %>
             <%= f.text_field "plan_#{i}".to_sym,value:sale.plan,class:"input_inventory" %>
           <% else %>
