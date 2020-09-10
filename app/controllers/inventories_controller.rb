@@ -33,6 +33,8 @@ class InventoriesController < ApplicationController
   def update
     @items = Item.where(user_id:current_user.id)
     date = Date.parse(params[:date])
+    sale = Sale.find_by(date:date,user_id:current_user.id)
+    sale.update(actual:params[:actual])
     i = 0
     @items.each do |item|
       item.inventories.each do |inventory|

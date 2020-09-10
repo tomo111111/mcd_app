@@ -2,18 +2,51 @@
 <tr>
   <td rowspan="3" class="item_name"><%= item.name %> </td>
   <td>納品</td>
-  <% inventories.each do |inventory| %>
-    <td class="order_colmun"><%= inventory.order %></td>
+  <% 14.times do |i| %>
+    <% exist = "n" %>
+    <% inventories.each do |inventory| %>
+      <% if inventory.date == @starting_point + i %>
+        <td class="order_colmun"><%= inventory.order %></td>
+        <% exist = "y" %>
+      <% end %>
+    <% end %>
+    <% if exist == "n" %>
+      <td></td>
+    <% end %>
+    <% i += 1 %>
   <%end%>
+
   <tr>
     <td>使用</td>
+    <% 14.times do |i| %>
+    <% exist = "n" %>
     <% inventories.each do |inventory| %>
-      <td class="use_colmun"><%= inventory.use %></td>
-    <%end%>
+      <% if inventory.date == @starting_point + i %>
+        <td class="use_colmun"><%= inventory.use %></td>
+        <% exist = "y" %>
+      <% end %>
+    <% end %>
+    <% if exist == "n" %>
+      <td></td>
+    <% end %>
+    <% i += 1 %>
+  <%end%>
   </tr>
-  <tr><td>在庫</td>
+
+  <tr>
+  <td>在庫</td>
+    <% 14.times do |i| %>
+    <% exist = "n" %>
     <% inventories.each do |inventory| %>
-      <td class="stock_colmun"><%= inventory.stock %></td>
-    <%end%>
+      <% if inventory.date == @starting_point + i %>
+        <td class="stock_colmun"><%= inventory.stock %></td>
+        <% exist = "y" %>
+      <% end %>
+    <% end %>
+    <% if exist == "n" %>
+      <td></td>
+    <% end %>
+    <% i += 1 %>
+  <%end%>
   </tr>    
 </tr>
