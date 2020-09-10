@@ -1,0 +1,19 @@
+
+<h1>配送日設定</h1>
+<p>配送を希望する曜日にチェックを入れて下さい。</p>
+<%= form_with model: @delivery, local: true do |f| %>
+  <% @deliveries.each do |delivery| %>
+    <div class="field">
+      <%= f.label "#{delivery.day_of_week}" %>
+      <% if delivery.check %>
+        <%= f.check_box "#{delivery.day_of_week}",checked:true %>
+      <% else %>
+        <%= f.check_box "#{delivery.day_of_week}" %>
+      <% end %>
+    </div>
+  <%end%>
+ 
+  <div class="actions">
+    <%= f.submit  "登録",class:"btn btn-primary btn-sm" %>
+  </div>
+<% end %>
