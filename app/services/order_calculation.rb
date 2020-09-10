@@ -15,7 +15,7 @@ class OrderCalculation
         if unit
           unit_all << unit
         else
-          # なければ仮でケース単価50000とする
+          # 1日分もなければ仮でケース単価50000とする
           unit = 50000
           unit_all << unit
         end

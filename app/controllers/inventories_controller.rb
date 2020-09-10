@@ -18,10 +18,6 @@ class InventoriesController < ApplicationController
     @items.each do |item|
       Inventory.create(order:params["order_#{i}".to_sym],use:params["use_#{i}".to_sym],stock:params["stock_#{i}".to_sym],date:params[:date],item_id:item.id,user_id:current_user.id)
       i += 1
-      
-      #  OrderCalculation.calculation(item,date)
-       
-      
     end
     flash[:notice] = "#{date}の情報を登録しました"
     redirect_to inventories_path
@@ -43,7 +39,11 @@ class InventoriesController < ApplicationController
         end
       end
       i += 1
-      OrderCalculation.calculation(item,date)
+      # その日の情報が全て揃っているなら翌々日の納品数計算に入る
+      inventory = Inventory.find_by(date:date,item_id:item.id,user_id:current_user.id)
+      if inventory.order != nil && inventory.use != nil && inventory.stock != nil
+        OrderCalculation.calculation(item,date)
+      end
     end
     flash[:notice] = "#{date}の情報を登録しました"
     redirect_to inventories_path
