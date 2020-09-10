@@ -7,7 +7,7 @@ class OrderCalculation
       sale = Sale.find_by(date:date - i,user_id:item.user_id)
       # i日前の在庫情報があれば
       if inventory
-        unit = sale.plan / inventory.use
+        unit = sale.actual / inventory.use
         unit_all << unit
       # i日前の在庫情報がなければ
       else
@@ -55,12 +55,17 @@ class OrderCalculation
     tomorrow_inventory = Inventory.find_by(date:date + 1,item_id:item.id,user_id:item.user_id)
     day_after_tomorrow_sale = Sale.find_by(date:date + 2,user_id:item.user_id)
     day_after_tomorrow_use = day_after_tomorrow_sale.plan / ave_unit_2
-  
     day_after_tomorrow_order = item.margin + day_after_tomorrow_use + tomorrow_use - tomorrow_inventory.order - inventory.stock
     if day_after_tomorrow_order < 0
       day_after_tomorrow_order = 0
     end
-    Inventory.create(order:day_after_tomorrow_order.round(2),date:date + 2,item_id:item.id,user_id:item.user_id)
+    day_after_tomorrow_inventory = Inventory.find_by(date:date + 2,item_id:item.id,user_id:item.user_id)
+    # すでに翌々日の納品数が決まっている場合（当日のデータを際入力した場合など）はupdate、通常通りの手順ならcreate
+    if day_after_tomorrow_inventory
+      day_after_tomorrow_inventory.update(order:day_after_tomorrow_order.round(2))
+    else
+      Inventory.create(order:day_after_tomorrow_order.round(2),date:date + 2,item_id:item.id,user_id:item.user_id)
+    end
   end
 
 end

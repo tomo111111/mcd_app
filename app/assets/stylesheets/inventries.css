@@ -66,6 +66,11 @@
   margin-left: 20px;
 }
 
+.plan_actual{
+	text-align: right;
+	margin-bottom: 20px;
+}
+
 .input_inventory{
 	width: 74px;
 }
