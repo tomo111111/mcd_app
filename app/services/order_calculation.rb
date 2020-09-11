@@ -59,13 +59,42 @@ class OrderCalculation
     if day_after_tomorrow_order < 0
       day_after_tomorrow_order = 0
     end
+
+    # 翌々日のinv情報を取得（nilの場合もある）
     day_after_tomorrow_inventory = Inventory.find_by(date:date + 2,item_id:item.id,user_id:item.user_id)
-    # すでに翌々日の納品数が決まっている場合（当日のデータを際入力した場合など）はupdate、通常通りの手順ならcreate
-    if day_after_tomorrow_inventory
-      day_after_tomorrow_inventory.update(order:day_after_tomorrow_order.round(2))
+    # 配送有りの曜日を全て取得
+    deliveries = Delivery.where(check: 1,user_id:item.user_id)
+    # 配送有りの曜日を配列に代入
+    array_deliveries =[]
+    deliveries.each do |delivery|
+      array_deliveries << delivery.day_of_week
+    end
+
+    # 翌々日が配送有りの曜日だったら
+    if array_deliveries.include?(%w[Sun. Mon. Tue. Wed. Thu. Fri. Sat.][(date + 2).wday])
+      # 3日後が配送有りの曜日だったら
+      if array_deliveries.include?(%w[Sun. Mon. Tue. Wed. Thu. Fri. Sat.][(date + 3).wday])
+        # すでに翌々日の納品数が決まっている場合（当日のデータを再入力した場合など）はupdate、通常通りの手順ならcreate
+        if day_after_tomorrow_inventory
+          day_after_tomorrow_inventory.update(order:day_after_tomorrow_order.round)
+        else
+          Inventory.create(order:day_after_tomorrow_order.round,date:date + 2,item_id:item.id,user_id:item.user_id)
+        end
+      # 3日後が配送無しの曜日だった場合の処理
+      else
+        if day_after_tomorrow_inventory
+          day_after_tomorrow_inventory.update(order:(day_after_tomorrow_order * 2 - item.margin).round)
+        else
+          Inventory.create(order:(day_after_tomorrow_order * 2 - item.margin).round,date:date + 2,item_id:item.id,user_id:item.user_id)
+        end
+      end
+      # 翌々日が配送無しの曜日だったら
     else
-      Inventory.create(order:day_after_tomorrow_order.round(2),date:date + 2,item_id:item.id,user_id:item.user_id)
+      if day_after_tomorrow_inventory
+        day_after_tomorrow_inventory.update(order:0)
+      else
+        Inventory.create(order:0,date:date + 2,item_id:item.id,user_id:item.user_id)
+      end
     end
   end
-
 end

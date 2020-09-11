@@ -23,6 +23,9 @@
       <%end%>
     </div>
     <div class="top_links">
+      <%= link_to root_path, class:"top_link" do %>
+        <i class="fas fa-desktop">一覧表示</i>
+      <%end%>
       <%= link_to inventories_path, class:"top_link" do %>
         <i class="fas fa-edit">実績入力</i>
       <%end%>
@@ -31,6 +34,9 @@
       <%end%>
       <%= link_to new_item_path,class:"top_link" do %>
         <i class="fas fa-cog">原材料設定</i>
+      <%end%>
+      <%= link_to deliveries_path,class:"top_link" do %>
+        <i class="fas fa-truck">配送日設定</i>
       <%end%>
       <%= link_to destroy_user_session_path,method: :delete,class:"top_link" do %>
         <i class="fas fa-sign-out-alt">ログアウト</i>
