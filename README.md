@@ -15,6 +15,7 @@
 - has_many :inventories
 - has_many :sales
 - has_many :comments
+- has_many :deliveries
 
 ## items テーブル
 
@@ -65,6 +66,18 @@
 | text    | text       |                                |
 | date    | date       | null: false                    |
 | user_id | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+
+## deliveries テーブル
+
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| day_of_week | string     |                                |
+| check       | boolean    | null: false, default: false    |
+| user_id     | references | null: false, foreign_key: true |
 
 ### Association
 

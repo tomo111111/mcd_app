@@ -1,19 +1,36 @@
 
 <h1>配送日設定</h1>
 <p>配送を希望する曜日にチェックを入れて下さい。</p>
-<%= form_with model: @delivery, local: true do |f| %>
-  <% @deliveries.each do |delivery| %>
-    <div class="field">
-      <%= f.label "#{delivery.day_of_week}" %>
-      <% if delivery.check %>
-        <%= f.check_box "#{delivery.day_of_week}",checked:true %>
-      <% else %>
-        <%= f.check_box "#{delivery.day_of_week}" %>
-      <% end %>
+<%# 更新 %>
+<% if @deliveries.present? %>
+  <%= form_with url:delivery_path(0),method: :patch, local: true do |f| %>
+    <% @deliveries.each do |delivery| %>
+      <div class="field">
+        <%= f.label "#{delivery.day_of_week}" %>
+        <% if delivery.check %>
+          <%= f.check_box "#{delivery.day_of_week}",checked:true %>
+        <% else %>
+          <%= f.check_box "#{delivery.day_of_week}" %>
+        <% end %>
+      </div>
+    <%end%>
+  
+    <div class="actions">
+      <%= f.submit  "登録",class:"btn btn-primary btn-sm" %>
     </div>
-  <%end%>
- 
-  <div class="actions">
-    <%= f.submit  "登録",class:"btn btn-primary btn-sm" %>
-  </div>
+  <% end %>
+  <%# 新規登録 %>
+<% else %>
+  <%= form_with model: @delivery, local: true do |f| %>
+    <% %w[Sun. Mon. Tue. Wed. Thu. Fri. Sat.].each do |week| %>
+      <div class="field">
+        <%= f.label "#{week}" %>
+          <%= f.check_box "#{week}" %>
+      </div>
+    <%end%>
+  
+    <div class="actions">
+      <%= f.submit  "登録",class:"btn btn-primary btn-sm" %>
+    </div>
+  <% end %>
 <% end %>
