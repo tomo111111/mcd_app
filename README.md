@@ -64,7 +64,7 @@
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| text    | text       |                                |
+| text    | text       | null: false                    |
 | date    | date       | null: false                    |
 | user_id | references | null: false, foreign_key: true |
 
