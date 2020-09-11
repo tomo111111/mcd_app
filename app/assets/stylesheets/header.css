@@ -18,6 +18,7 @@
   color: white;
   font-size: 20px;
 }
+
 .top_links{
   position: absolute;
   right: 0px;
@@ -37,4 +38,10 @@
   background-color: lightskyblue;
   color: white;
   font-size: 20px;
+}
+
+@media (min-width: 1024px) {
+  .header_content{
+    display: flex;
+  }
 }

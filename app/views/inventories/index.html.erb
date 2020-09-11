@@ -1,17 +1,23 @@
+<div class="text-center">
+<h1>実績入力画面</h1>
+<p>日付選択後、各項目を入力してください。</p>
 <%= render "calendar" %>
+</div>
 <% sale = Sale.find_by(date:@date,user_id:current_user.id) %>
 
 <% if @date %>
-  <%= @date %>
-  （<%= @day_of_week[@date.wday] %>）
+  <div class="date bg-light">
+    <%= @date %>
+    （<%= @day_of_week[@date.wday] %>）
+  </div>
   <% if @inventory_this.present? %>
     <%= form_with url:inventory_path(0),method: :patch,local: true do |f| %>
       <div class="plan_actual">
         <div>
-          PLAN：<%= sale.plan %>
+          PLAN SALES：<%= sale.plan %>
         </div>
         <div>
-          ACTUAL：<%= f.text_field :actual,value:sale.actual,class:"input_inventory" %>
+          ACTUAL SALES：<%= f.text_field :actual,value:sale.actual,class:"input_inventory" %>
         </div>
       </div>
       <table>
@@ -50,7 +56,9 @@
         </tr>
       </table>
       <%= f.text_field :date, value:@date, class:"hidden" %>
-      <%= f.submit "登録",class:"btn btn-primary" %>
+      <div class="text-center mt-4">
+       <%= f.submit "　登録　",class:"btn btn-primary btn-lg" %>
+      </div>
     <%end%>
   <%else%>
     <%= form_with model:@inventory,local: true do |f| %>
@@ -90,7 +98,9 @@
         </tr>
       </table>
       <%= f.text_field :date, value:@date, class:"hidden" %>
-      <%= f.submit "登録",class:"btn btn-primary" %>
+      <div class="text-center mt-4">
+       <%= f.submit "　登録　",class:"btn btn-primary btn-lg" %>
+      </div>
     <%end%>
   <%end%>
 <%end%>

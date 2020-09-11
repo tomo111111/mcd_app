@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>McdApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,34 +17,43 @@
     <%= link_to root_path do %>
       <%= image_tag "logo.png", class:"top_logo" %>
     <%end%>
-    <div class="top_messages">
-      <div class="top_message">お疲れ様です！</div>
-      <% if user_signed_in? %>
-      <div class="top_message"><%= current_user.store_name %>さん</div>
-      <%end%>
-    </div>
-    <div class="top_links">
-      <%= link_to root_path, class:"top_link" do %>
-        <i class="fas fa-desktop">一覧表示</i>
-      <%end%>
-      <%= link_to inventories_path, class:"top_link" do %>
-        <i class="fas fa-edit">実績入力</i>
-      <%end%>
-      <%= link_to sales_path,class:"top_link" do %>
-        <i class="fas fa-funnel-dollar">セールス予測</i>
-      <%end%>
-      <%= link_to new_item_path,class:"top_link" do %>
-        <i class="fas fa-cog">原材料設定</i>
-      <%end%>
-      <%= link_to deliveries_path,class:"top_link" do %>
-        <i class="fas fa-truck">配送日設定</i>
-      <%end%>
-      <%= link_to destroy_user_session_path,method: :delete,class:"top_link" do %>
-        <i class="fas fa-sign-out-alt">ログアウト</i>
-      <%end%>
+      <div class="top_messages">
+        <div class="top_message">お疲れ様です！</div>
+        <% if user_signed_in? %>
+        <div class="top_message"><%= current_user.store_name %>さん</div>
+        <%end%>
+      </div>
+
+    <div class="top_links header_content">
+
+      <div>
+        <%= link_to root_path, class:"top_link" do %>
+          <i class="fas fa-desktop">一覧表示</i>
+        <%end%>
+        <%= link_to inventories_path, class:"top_link" do %>
+          <i class="fas fa-edit">実績入力</i>
+        <%end%>
+        <%= link_to sales_path,class:"top_link" do %>
+          <i class="fas fa-funnel-dollar">セールス予測</i>
+        <%end%>
+      </div>
+
+      <div>
+        <%= link_to new_item_path,class:"top_link" do %>
+          <i class="fas fa-cog">原材料設定</i>
+        <%end%>
+        <%= link_to deliveries_path,class:"top_link" do %>
+          <i class="fas fa-truck">配送日設定</i>
+        <%end%>
+        <%= link_to destroy_user_session_path,method: :delete,class:"top_link" do %>
+          <i class="fas fa-sign-out-alt">ログアウト</i>
+        <%end%>
+      </div>
 
     </div>
+
   </div>
+
   <div class="flash_message">
     <%= flash[:notice] %>
   </div>

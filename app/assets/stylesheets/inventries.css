@@ -74,3 +74,9 @@
 .input_inventory{
 	width: 74px;
 }
+
+.date{
+	display: inline;
+	padding: 5px 0px 4px 12px;
+	font-size: 30px;
+}

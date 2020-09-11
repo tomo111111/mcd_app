@@ -1,47 +1,57 @@
-<%= form_with url:item_path(0),method: :patch,local:true do |f|%>
-  <div class="item_setting">
-    <table>
-      <tr>
-        <td>品目名</td>
-        <% @items.each do |item| %>
-          <td><%= item.name %></td>
-        <%end%>    
-      </tr>
+<div class="change_wrapper">
+  <h1>基準在庫数変更</h1>
+  <p>各品目の基準在庫数を変更できます。</p>
+  <%= form_with url:item_path(0),method: :patch,local:true do |f|%>
+    <div class="item_setting">
+      <table>
+        <tr>
+          <td>品目名</td>
+          <% @items.each do |item| %>
+            <td><%= item.name %></td>
+          <%end%>    
+        </tr>
 
-      <tr>
-        <td>基準在庫数</td>
-        <% i = 0 %>
-        <% @items.each do |item| %>
-        <td><%= f.text_field "margin_#{i}".to_sym,value:item.margin,class:"input_inventory" %></td>
-          <% i += 1 %>
-        <%end%>
-      </tr>
-    </table>
-    <div>
-    <%= f.submit "更新",class:"btn btn-primary btn-sm btn_setting1" %>
+        <tr>
+          <td>基準在庫数</td>
+          <% i = 0 %>
+          <% @items.each do |item| %>
+          <td><%= f.text_field "margin_#{i}".to_sym,value:item.margin,class:"input_inventory" %></td>
+            <% i += 1 %>
+          <%end%>
+        </tr>
+      </table>
+      <div>
+      <%= f.submit "更新",class:"btn btn-primary btn-sm btn_setting1" %>
+      </div>
     </div>
-  </div>
-<%end%>
-
-<%= form_with model:@item,local:true do |f|%>
-<div class="new">
-  <div>
-    <div class="new_field">
-      品　目　名：<%= f.text_field :name %>
-    </div>
-    <div class="new_field">
-      基準在庫数：<%= f.text_field :margin %>
-    </div>
-  </div>
-  <div>
-    <%= f.submit "登録", class:"btn btn-primary btn-sm btn_setting2" %>
-  </div>
+  <%end%>
 </div>
-<%end%>
+
+<div class="new_wrapper">
+  <h1>新規アイテム追加</h1>
+  <p>新しい品目と基準在庫数を登録できます。</p>
+  <%= form_with model:@item,local:true do |f|%>
+    <div class="new">
+      <div>
+        <div class="new_field">
+          品　目　名：<%= f.text_field :name %>
+        </div>
+        <div class="new_field">
+          基準在庫数：<%= f.text_field :margin %>
+        </div>
+      </div>
+      <div>
+        <%= f.submit "登録", class:"btn btn-primary btn-sm btn_setting2" %>
+      </div>
+    </div>
+  <%end%>
+</div>
 
 <div class="destroy">
-<%= form_with url:item_path(:id),method: :delete,local:true do |f|%>
-  <%= f.collection_select :name, Item.where(user_id:current_user.id), :id, :name, include_blank: "---" %>
-  <%= f.submit "削除", class:"btn btn-primary btn-sm btn_destroy" %>
+  <h1>既存アイテム削除</h1>
+  <p>販売が終了した品目を削除できます。</p>
+  <%= form_with url:item_path(:id),method: :delete,local:true do |f|%>
+    <%= f.collection_select :name, Item.where(user_id:current_user.id), :id, :name, include_blank: "---" %>
+    <%= f.submit "削除", class:"btn btn-primary btn-sm btn_destroy" %>
   <%end%>
 </div>
