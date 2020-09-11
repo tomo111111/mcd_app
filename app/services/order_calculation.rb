@@ -24,7 +24,7 @@ class OrderCalculation
     # 翌々日（納品日）の曜日によって参考にするケース単価を変更する
     # ave_unit_2は翌々日の使用数算出用
     # ave_unit_1は翌日の使用数算出用
-    case %w[日 月 火 水 木 金 土][(date + 2).wday]
+    case @day_of_week[(date + 2).wday]
       when "月"
         ave_unit_2 = (unit_all[1] + unit_all[2] + unit_all[3]) / 3
         ave_unit_1 = (unit_all[0] + unit_all[6]) / 2
@@ -71,9 +71,9 @@ class OrderCalculation
     end
 
     # 翌々日が配送有りの曜日だったら
-    if array_deliveries.include?(%w[Sun. Mon. Tue. Wed. Thu. Fri. Sat.][(date + 2).wday])
+    if array_deliveries.include?(@day_of_week[(date + 2).wday])
       # 3日後が配送有りの曜日だったら
-      if array_deliveries.include?(%w[Sun. Mon. Tue. Wed. Thu. Fri. Sat.][(date + 3).wday])
+      if array_deliveries.include?(@day_of_week[(date + 3).wday])
         # すでに翌々日の納品数が決まっている場合（当日のデータを再入力した場合など）はupdate、通常通りの手順ならcreate
         if day_after_tomorrow_inventory
           day_after_tomorrow_inventory.update(order:day_after_tomorrow_order.round)

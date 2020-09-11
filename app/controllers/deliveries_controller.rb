@@ -9,7 +9,7 @@ def new
 end
 
 def create
-  %w[Sun. Mon. Tue. Wed. Thu. Fri. Sat.].each do |week|
+  @day_of_week.each do |week|
     Delivery.create(day_of_week:week,check:params["#{week}".to_sym],user_id:current_user.id)
   end
   flash[:notice] = "配送日を登録しました"
