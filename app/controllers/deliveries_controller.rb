@@ -2,6 +2,8 @@ class DeliveriesController < ApplicationController
 
 def index
   @deliveries = Delivery.where(user_id:current_user.id)
+  @special = Special.new
+  @specials = Special.where(user_id:current_user.id)
 end
 
 def new
@@ -24,14 +26,20 @@ def update
   @deliveries.each do |delivery|
   delivery.update(check:params["#{delivery.day_of_week}".to_sym],user_id:current_user.id)
   end
-  flash[:notice] = "配送日を登録しました"
+  flash[:notice] = "配送曜日を登録しました"
   redirect_to deliveries_path
 end
 
-# private
+def special
+  Special.create(spesial_params)
+  flash[:notice] = "特別配送日を登録しました"
+  redirect_to deliveries_path
+end
 
-# def delivery_params
-#   params.require(:delivery).permit(:day_of_week,:check)
-# end
+private
+
+def spesial_params
+  params.require(:special).permit(:date).merge(user_id:current_user.id)
+end
 
 end

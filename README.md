@@ -16,6 +16,7 @@
 - has_many :sales
 - has_many :comments
 - has_many :deliveries
+- has_many :specials
 
 ## items テーブル
 
@@ -78,6 +79,17 @@
 | day_of_week | string     |                                |
 | check       | boolean    | null: false, default: false    |
 | user_id     | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+
+## specials テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| date    | date       | null: false                    |
+| user_id | references | null: false, foreign_key: true |
 
 ### Association
 

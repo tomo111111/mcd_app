@@ -1,6 +1,7 @@
 class OrderCalculation
 
   def self.calculation(item,date)
+    @day_of_week = %w[日 月 火 水 木 金 土]
     unit_all = []
     7.times do |i|
       inventory = Inventory.find_by(date:date - i,item_id:item.id,user_id:item.user_id)
@@ -69,11 +70,16 @@ class OrderCalculation
     deliveries.each do |delivery|
       array_deliveries << delivery.day_of_week
     end
-
-    # 翌々日が配送有りの曜日だったら
-    if array_deliveries.include?(@day_of_week[(date + 2).wday])
-      # 3日後が配送有りの曜日だったら
-      if array_deliveries.include?(@day_of_week[(date + 3).wday])
+    # 特別配送日を配列に代入
+    specials = Special.where(user_id:item.user_id)
+    array_specials = []
+    specials.each do |special|
+      array_specials << special.date
+    end
+    # 翌々日が配送有りの曜日or特別配送日だったら
+    if array_deliveries.include?(@day_of_week[(date + 2).wday]) || array_specials.include?(date + 2)
+      # 3日後が配送有りの曜日or特別配送日だったら
+      if array_deliveries.include?(@day_of_week[(date + 3).wday]) || array_specials.include?(date + 3)
         # すでに翌々日の納品数が決まっている場合（当日のデータを再入力した場合など）はupdate、通常通りの手順ならcreate
         if day_after_tomorrow_inventory
           day_after_tomorrow_inventory.update(order:day_after_tomorrow_order.round)

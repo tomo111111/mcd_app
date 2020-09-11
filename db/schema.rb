@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_073730) do
+ActiveRecord::Schema.define(version: 2020_09_11_053830) do
 
   create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "day_of_week", null: false
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2020_09_10_073730) do
     t.index ["user_id"], name: "index_sales_on_user_id"
   end
 
+  create_table "specials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "date", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_specials_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "store_name", null: false
     t.string "store_number", null: false
@@ -72,4 +80,5 @@ ActiveRecord::Schema.define(version: 2020_09_10_073730) do
   add_foreign_key "inventories", "users"
   add_foreign_key "items", "users"
   add_foreign_key "sales", "users"
+  add_foreign_key "specials", "users"
 end
