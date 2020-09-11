@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   resources :items, only: [:index,:new,:create,:edit,:update,:destroy]
   resources :sales,only:[:index,:new,:create,:edit,:update] 
   resources :inventories, only:[:index,:new,:create,:edit,:update] 
-  resources :deliveries,only:[:index,:new,:create,:edit,:update]
+  resources :deliveries,only:[:index,:new,:create,:edit,:update] do
+    collection do
+      post 'special'
+    end
+  end
 end

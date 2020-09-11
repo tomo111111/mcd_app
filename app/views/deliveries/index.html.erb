@@ -1,36 +1,57 @@
+<div class="delivery">
+  <h1>配送曜日設定</h1>
+  <p>配送を希望する曜日にチェックを入れて下さい。</p>
+  <%# 更新 %>
+  <% if @deliveries.present? %>
+    <%= form_with url:delivery_path(0),method: :patch, local: true do |f| %>
+      <% @deliveries.each do |delivery| %>
+        <div class="field">
+          <%= f.label "#{delivery.day_of_week}曜日" %>
+          <% if delivery.check %>
+            <%= f.check_box "#{delivery.day_of_week}",checked:true %>
+          <% else %>
+            <%= f.check_box "#{delivery.day_of_week}" %>
+          <% end %>
+        </div>
+      <%end%>
+    
+      <div class="actions">
+        <%= f.submit  "登録",class:"btn btn-primary btn-sm" %>
+      </div>
+    <% end %>
+    <%# 新規登録 %>
+  <% else %>
+    <%= form_with model: @delivery, local: true do |f| %>
+      <% @day_of_week.each do |week| %>
+        <div class="field">
+          <%= f.label "#{week}曜日" %>
+            <%= f.check_box "#{week}" %>
+        </div>
+      <%end%>
+    
+      <div class="actions">
+        <%= f.submit  "登録",class:"btn btn-primary btn-sm" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
-<h1>配送日設定</h1>
-<p>配送を希望する曜日にチェックを入れて下さい。</p>
-<%# 更新 %>
-<% if @deliveries.present? %>
-  <%= form_with url:delivery_path(0),method: :patch, local: true do |f| %>
-    <% @deliveries.each do |delivery| %>
-      <div class="field">
-        <%= f.label "#{delivery.day_of_week}曜日" %>
-        <% if delivery.check %>
-          <%= f.check_box "#{delivery.day_of_week}",checked:true %>
-        <% else %>
-          <%= f.check_box "#{delivery.day_of_week}" %>
-        <% end %>
-      </div>
-    <%end%>
-  
-    <div class="actions">
-      <%= f.submit  "登録",class:"btn btn-primary btn-sm" %>
-    </div>
-  <% end %>
-  <%# 新規登録 %>
-<% else %>
-  <%= form_with model: @delivery, local: true do |f| %>
-    <% @day_of_week.each do |week| %>
-      <div class="field">
-        <%= f.label "#{week}曜日" %>
-          <%= f.check_box "#{week}" %>
-      </div>
-    <%end%>
-  
-    <div class="actions">
-      <%= f.submit  "登録",class:"btn btn-primary btn-sm" %>
-    </div>
-  <% end %>
-<% end %>
+<div class="special">
+  <h1>特別配送日設定</h1>
+  <div class="">
+    <p>下記は特別配送日です。</p>
+    <p>影響を受ける日の発注数は自動で調整されます。</p>
+    <ul class="lists">
+      <% @specials.each do |special| %>
+        <li class="list"><%= special.date %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="">
+  <p>こちらから特別配送日を登録して下さい。</p>
+    <%= form_with model:@special,url:special_deliveries_path,local:true do |f| %>
+      <%= f.text_field :date,placeholder:"yyyy/mm/dd" %>
+      <%= f.submit "登録",class:"btn btn-primary btn-sm" %>
+    <% end %>
+  </div>
+</div>
