@@ -43,7 +43,9 @@
     <p>影響を受ける日の発注数は自動で調整されます。</p>
     <ul class="lists">
       <% @specials.each do |special| %>
+      <% if special.date >= Date.today %>
         <li class="list"><%= special.date %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>

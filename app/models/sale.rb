@@ -1,5 +1,7 @@
 class Sale < ApplicationRecord
   belongs_to :user
 
-  validates :plan,presence:true,format: {with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters."}
+    validates :plan, presence:true, numericality:{only_integer: true}
+    validates :actual, numericality:{only_integer: true},allow_blank: true
+
 end

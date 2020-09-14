@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   
   with_options presence: true do
     validates :name
-    validates :margin, format: {with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters."}
+    validates :margin, numericality: { only_integer: true }
 
   end
 end

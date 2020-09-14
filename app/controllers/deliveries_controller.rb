@@ -3,7 +3,7 @@ class DeliveriesController < ApplicationController
 def index
   @deliveries = Delivery.where(user_id:current_user.id)
   @special = Special.new
-  @specials = Special.where(user_id:current_user.id)
+  @specials = Special.where(user_id:current_user.id).order(date: :ASC)
 end
 
 def new
@@ -31,9 +31,16 @@ def update
 end
 
 def special
-  Special.create(spesial_params)
-  flash[:notice] = "特別配送日を登録しました"
-  redirect_to deliveries_path
+  @deliveries = Delivery.where(user_id:current_user.id)
+  @specials = Special.where(user_id:current_user.id).order(date: :ASC)
+   special = Special.new(spesial_params)
+   if special.valid?
+    special.save
+    flash[:notice] = "特別配送日を登録しました"
+    redirect_to deliveries_path
+   else
+    render :index
+   end
 end
 
 private
