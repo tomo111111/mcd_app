@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def day_of_week
     @day_of_week = %w[日 月 火 水 木 金 土]
+    @starting_point = Date.today - 7
   end
 
   protected
