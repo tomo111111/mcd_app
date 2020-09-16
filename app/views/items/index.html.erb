@@ -1,5 +1,6 @@
 <table>
 
+  <%# 日付、曜日部分 %>
   <tr>
     <td rowspan="2" colspan="2">
     <% if (@starting_point).day != ((@starting_point).day + 14) %>
@@ -25,8 +26,42 @@
     <%end%>
   </tr>
 
+  <%# 各品目部分 %>
   <% @items.each do |item| %>
     <%= render partial:"whole",locals:{item:item} %>
   <% end %>
 
+  <%# コメント部分 %>
+    <tr>
+    <td colspan="2">コメント</td>
+    <% 14.times do |i| %>
+      <% if @comments %>
+        <% array_comments =[] %>
+        <% @comments.each do |comment| %>
+          <% array_comments << comment.date %>
+        <% end %>
+        <% if array_comments.include?(@starting_point + i) %>
+          <td><i class="far fa-comment-dots comment_btn" data-id=<%= i %> ></i></td>
+        <% else %>
+          <td><i class="far fa-plus-square comment_btn" id="plus_btn" data-id=<%= i %> ></i></td>
+        <% end %>
+      <% end %>
+    <% end %>
+    </tr>
+
 </table>
+
+<div class="comment" id="comment_wrapper">
+  <div class="comment_form">
+    <div class="hidden" id="comment_form">
+      <%= form_with model:@comment,id: "form",local: true do |f| %>
+        <%= f.text_area :text, placeholder: "コメントする", rows: "2",class:"text_area",id:"content" %>
+        <div>
+          <%= f.text_field :date,class:"hidden",id:"hidden_date" %>
+          <%= f.submit "投　稿",class:"btn btn-primary btn-block", id: "submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

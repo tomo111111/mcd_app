@@ -1,0 +1,14 @@
+.comment_form{
+  text-align: center;
+}
+.text_area{
+  margin:20px auto 0;
+  width:100%;
+}
+.comment_text{
+  border-bottom: lightslategray solid 1px;
+}
+.comment_field p {
+  white-space: pre-wrap;
+  margin-bottom: 0;
+}

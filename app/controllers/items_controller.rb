@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
   
   def index
-    @starting_point = Date.today - 7
     @items = Item.where(user_id:current_user.id)
+    @comment = Comment.new
+    @comments = Comment.all
   end
 
   def new

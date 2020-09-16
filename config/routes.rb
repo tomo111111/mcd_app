@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       post 'special'
     end
   end
+  resources :comments,only:[:new,:create,:edit,:update]
+  get 'comments/:id', to: 'comments#checked'
 end
