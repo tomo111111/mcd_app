@@ -3,7 +3,9 @@
 <%# その月のレコードが一つもないとき（新規登録時） %>
 <% if Sale.where(date:this_month.beginning_of_month..this_month.end_of_month,user_id:current_user.id).present? %>
   <%= form_with url:sale_path(0),method: :patch, local: true do |f| %>
-  <%= f.submit "登録",class:"btn btn-primary mb-2" %>
+  <div class="submit_sales">
+    <%= f.submit "登録",class:"btn btn-dark btn-block mb-2" %>
+  </div>
 
     <table>
     <tr>
@@ -15,7 +17,13 @@
       <tr>
         <td><%= i += 1 %></td>
         <% this_day = Date.new(Date.today.since(num.month).year,Date.today.since(num.month).month,i) %>
-        <td><%= @day_of_week[this_day.wday] %></td>
+        <% if this_day.wday == 0 %>
+          <td class="bg-info text-white"><%= @day_of_week[this_day.wday] %></td>
+        <% elsif this_day.wday == 6 %>
+          <td class="bg-secondary text-white"><%= @day_of_week[this_day.wday] %></td>
+        <% else %>
+            <td><%= @day_of_week[this_day.wday] %></td>
+        <% end %>
         <td>
           <% sale = Sale.find_by(date:this_day,user_id:current_user.id) %>
           <% if sale %>
@@ -33,7 +41,9 @@
   <%# その月のレコードがあるとき %>
 <% else %>
   <%= form_with url:sales_path, local: true do |f| %>
-  <%= f.submit "登録",class:"btn btn-primary mb-2" %>
+  <div class="submit_sales">
+    <%= f.submit "登録",class:"btn btn-dark btn-block mb-2" %>
+  </div>
 
     <table>
     <tr>
@@ -45,7 +55,13 @@
       <tr>
         <td><%= i += 1 %></td>
         <% this_day = Date.new(Date.today.since(num.month).year,Date.today.since(num.month).month,i) %>
-        <td><%= @day_of_week[this_day.wday] %></td>
+        <% if this_day.wday == 0 %>
+          <td class="bg-info text-white"><%= @day_of_week[this_day.wday] %></td>
+        <% elsif this_day.wday == 6 %>
+          <td class="bg-secondary text-white"><%= @day_of_week[this_day.wday] %></td>
+        <% else %>
+            <td><%= @day_of_week[this_day.wday] %></td>
+        <% end %>
         <td>
           <% sale = Sale.find_by(date:this_day,user_id:current_user.id) %>
           <% if sale %>

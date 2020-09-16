@@ -2,7 +2,7 @@
 
   <%# 日付、曜日部分 %>
   <tr>
-    <td rowspan="2" colspan="2">
+    <td rowspan="2" colspan="2" class="month_field">
     <% if (@starting_point).day != ((@starting_point).day + 14) %>
     <%= (@starting_point).month %>月/<%= (@starting_point).month + 1 %>月
     <%else%>
@@ -17,9 +17,9 @@
     <tr>
     <% 14.times do |i| %>
       <% if (@starting_point + i).wday == 0  %>
-        <td class="bg-danger"><%= @day_of_week[(@starting_point + i).wday]  %></td>
+        <td class="bg-info text-white"><%= @day_of_week[(@starting_point + i).wday]  %></td>
       <%elsif (@starting_point + i).wday == 6 %>
-        <td class="bg-primary"><%= @day_of_week[(@starting_point + i).wday]  %></td>
+        <td class="bg-secondary text-white"><%= @day_of_week[(@starting_point + i).wday]  %></td>
       <%else%>
         <td><%= @day_of_week[(@starting_point + i).wday]  %></td>
       <%end%>
@@ -58,7 +58,7 @@
         <%= f.text_area :text, placeholder: "コメントする", rows: "2",class:"text_area",id:"content" %>
         <div>
           <%= f.text_field :date,class:"hidden",id:"hidden_date" %>
-          <%= f.submit "投　稿",class:"btn btn-primary btn-block", id: "submit" %>
+          <%= f.submit "投　稿",class:"btn btn-dark btn-block", id: "submit" %>
         </div>
       <% end %>
     </div>

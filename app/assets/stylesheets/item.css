@@ -8,13 +8,16 @@ table{
 }
 th,td{
   width: 5vw;
-  border:solid 2px #aaaaaa;
+  border:solid 2px lightgray;
+}
+.month_field{
+  font-size: 24px;
 }
 .item_name{
   width: 10vw;
 }
 .order_colmun{
-  background-color: lightgray;
+  background-color: rgb(231, 231, 231);
 }
 .use_colmun{
   background-color: whitesmoke;
@@ -53,4 +56,8 @@ width: 60px;
 }
 .btn_destroy{
   margin-left: 16px;
+}
+
+.comment_btn{
+  font-size: 18px;
 }

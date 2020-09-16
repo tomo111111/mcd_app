@@ -21,7 +21,7 @@
         </tr>
       </table>
       <div>
-      <%= f.submit "更新",class:"btn btn-primary btn-sm btn_setting1" %>
+      <%= f.submit "更新",class:"btn btn-dark btn-sm btn_setting1" %>
       </div>
     </div>
   <%end%>
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div>
-        <%= f.submit "登録", class:"btn btn-primary btn-sm btn_setting2" %>
+        <%= f.submit "登録", class:"btn btn-dark btn-sm btn_setting2" %>
       </div>
     </div>
   <%end%>
@@ -52,6 +52,6 @@
   <p>販売が終了した品目を削除できます。</p>
   <%= form_with url:item_path(:id),method: :delete,local:true do |f|%>
     <%= f.collection_select :name, Item.where(user_id:current_user.id), :id, :name, include_blank: "---" %>
-    <%= f.submit "削除", class:"btn btn-primary btn-sm btn_destroy" %>
+    <%= f.submit "削除", class:"btn btn-dark btn-sm btn_destroy" %>
   <%end%>
 </div>

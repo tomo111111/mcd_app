@@ -16,7 +16,7 @@
       <%end%>
     
       <div class="actions">
-        <%= f.submit  "登録",class:"btn btn-primary btn-sm" %>
+        <%= f.submit  "登録",class:"btn btn-dark btn-sm" %>
       </div>
     <% end %>
     <%# 新規登録 %>
@@ -30,7 +30,7 @@
       <%end%>
     
       <div class="actions">
-        <%= f.submit  "登録",class:"btn btn-primary btn-sm" %>
+        <%= f.submit  "登録",class:"btn btn-dark btn-sm" %>
       </div>
     <% end %>
   <% end %>
@@ -53,7 +53,7 @@
   <p>こちらから特別配送日を登録して下さい。</p>
     <%= form_with model:@special,url:special_deliveries_path,local:true do |f| %>
       <%= f.text_field :date,placeholder:"yyyy/mm/dd" %>
-      <%= f.submit "登録",class:"btn btn-primary btn-sm" %>
+      <%= f.submit "登録",class:"btn btn-dark btn-sm" %>
     <% end %>
   </div>
 </div>

@@ -25,7 +25,7 @@
 .cp_ipselect.cp_sl04 {
 	position: relative;
 	border-radius: 2px;
-	border: 2px solid #007bff;
+	border: 2px solid #343a40;
   border-radius: 50px;
 	background: #ffffff;
 }
@@ -39,12 +39,12 @@
 	content: '';
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
-	border-top: 6px solid #007bff;
+	border-top: 6px solid #343a40;
 	pointer-events: none;
 }
 .cp_ipselect.cp_sl04 select {
 	padding: 8px 38px 8px 8px;
-	color: #007bff;
+	color: #343a40;
 }
 /* ドロップダウン */ 
 
@@ -73,6 +73,7 @@
 
 .input_inventory{
 	width: 74px;
+	border: none;
 }
 
 .date{
