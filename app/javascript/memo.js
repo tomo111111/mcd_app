@@ -18,14 +18,19 @@ function memo() {
           <div>
             <p>${comment.date}</p>
           </div>
-          <div class="comment_text">
-            <p>${comment.text}</p>
+          <div class="text_destroy">
+            <div class="comment_text">
+              <p>${comment.text}</p>
+            </div>
+            <div class="destroy_link btn btn-outline-secondary btn-sm" id="destroy_btn" data-id=${comment.id}>
+              削除
+            </div>
           </div>
         </div>`;
       place.insertAdjacentHTML("afterbegin", HTML);
       formText.value = "";
 
-      
+
 
     };
     e.preventDefault();

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post 'special'
     end
   end
-  resources :comments,only:[:new,:create,:edit,:update]
+  resources :comments,only:[:new,:create]
   get 'comments/:id', to: 'comments#checked'
+  get 'comments/:id/destroy', to: 'comments#destroy'
 end

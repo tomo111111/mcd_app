@@ -6,9 +6,29 @@
   width:100%;
 }
 .comment_text{
+  
+}
+
+.text_destroy{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
   border-bottom: lightslategray solid 1px;
 }
+
 .comment_field p {
   white-space: pre-wrap;
   margin-bottom: 0;
+  display: inline;
+}
+
+.comment_field a{
+
+}
+.destroy_link{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height:31px;
+
 }

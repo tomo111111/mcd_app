@@ -9,12 +9,12 @@ class CommentsController < ApplicationController
     render json:{ post: comment }
   end
 
-  def edit
-
-  end
-
-  def update
-
+  def destroy
+    comment = Comment.find(params[:id])
+    date = comment.date
+    comment.destroy
+    day_comments = Comment.where(date:date)
+    render json:{com:day_comments}
   end
 
   def checked

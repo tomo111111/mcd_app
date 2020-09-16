@@ -35,8 +35,13 @@ function comment(){
           <div>
             <p>${comment.date}</p>
           </div>
-          <div class="comment_text">
-            <p>${comment.text}</p>
+          <div class="text_destroy">
+            <div class="comment_text">
+              <p>${comment.text}</p>
+            </div>
+            <div class="destroy_link btn btn-outline-secondary btn-sm" id="destroy_btn" data-id=${comment.id}>
+            削除
+            </div>
           </div>
         </div>`;
           place.insertAdjacentHTML("afterbegin",HTML);
@@ -44,13 +49,12 @@ function comment(){
 
         //コメント有無によるボタンの切り替え
         const submit = document.getElementById("submit");
-        console.log(btn);
-        console.log(addHTML.length);
+        // console.log(btn);
+        // console.log(addHTML.length);
         submit.addEventListener("click", () => {
           
           const checkLength = function(){
             if (addHTML.length){ 
-              // console.log(addHTML.length);
             btn.removeAttribute("class","fa-plus-square");
             btn.setAttribute("class","far fa-comment-dots comment_btn");
             };
