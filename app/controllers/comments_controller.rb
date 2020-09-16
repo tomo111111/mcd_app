@@ -5,8 +5,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    Comment.create(comment_params)
-    redirect_to root_path
+    comment = Comment.create(comment_params)
+    render json:{ post: comment }
   end
 
   def edit
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:text,:date).merge(user_id:current_user.id)
+    params.require(:comment).permit(:text).merge(date:Time.at(params[:comment][:date].to_i / 1000.0).strftime('%Y/%m/%d'),user_id:current_user.id)
   end
 
 end
