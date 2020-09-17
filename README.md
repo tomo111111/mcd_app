@@ -10,7 +10,8 @@
 ID/Pass
  - ID: tomohiro
  - Pass: 28811  
- テスト用アカウント
+ 
+テスト用アカウント
  - Store number: 306000
  - Password: mcd306000
 
