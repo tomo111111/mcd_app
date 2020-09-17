@@ -8,12 +8,12 @@
  https://mcd-app-2020.herokuapp.com/  
 
 ID/Pass
- - ID: tomohiro
- - Pass: 28811  
+- ID: tomohiro
+- Pass: 28811  
  
 テスト用アカウント
- - Store number: 306000
- - Password: mcd306000
+- Store number: 306000
+- Password: mcd306000
 
 # 利用方法
 ### ログイン/ログアウト
