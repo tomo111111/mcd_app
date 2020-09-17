@@ -16,7 +16,8 @@
 }
 .top_message{
   color: white;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .top_links{
@@ -27,7 +28,7 @@
 .top_link{
   color: white;
   margin-left: 10px;
-  font-size: 20px;
+  font-size: 22px;
 }
 .flash_message{
   width:100vw;
@@ -35,7 +36,7 @@
   margin: 10px 0 0 0;
   padding: 0 5px;
   float: left;
-  background-color:#6c757d;
+  background-color:#afeeee;
   color: white;
   font-size: 20px;
 }
