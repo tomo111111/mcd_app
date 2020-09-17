@@ -14,10 +14,10 @@
     <%= form_with url:inventory_path(0),method: :patch,local: true do |f| %>
       <div class="plan_actual">
         <div>
-          PLAN SALES：<%= sale.plan %>
+          Plan Sales：&emsp;<%= sale.plan %>
         </div>
         <div>
-          ACTUAL SALES：<%= f.text_field :actual,value:sale.actual,class:"input_inventory" %>
+          Actual Sales：<%= f.text_field :actual,value:sale.actual,class:"act" %>
         </div>
       </div>
       <table>
@@ -57,7 +57,7 @@
       </table>
       <%= f.text_field :date, value:@date, class:"hidden" %>
       <div class="text-center mt-4">
-       <%= f.submit "　登録　",class:"btn btn-primary btn-lg" %>
+       <%= f.submit "　登録　",class:"btn btn-dark btn-lg" %>
       </div>
     <%end%>
   <%else%>
@@ -99,7 +99,7 @@
       </table>
       <%= f.text_field :date, value:@date, class:"hidden" %>
       <div class="text-center mt-4">
-       <%= f.submit "　登録　",class:"btn btn-primary btn-lg" %>
+       <%= f.submit "　登録　",class:"btn btn-dark btn-lg" %>
       </div>
     <%end%>
   <%end%>

@@ -74,10 +74,18 @@
 .input_inventory{
 	width: 74px;
 	border: none;
+	text-align: right;
 }
 
 .date{
 	display: inline;
 	padding: 5px 0px 4px 12px;
 	font-size: 30px;
+}
+
+.act{
+	width: 74px;
+	border: lightgray solid 2px;
+	border-radius: 6px;
+	text-align: right;
 }

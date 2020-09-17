@@ -34,10 +34,10 @@
     <div class="new">
       <div>
         <div class="new_field">
-          品　目　名：<%= f.text_field :name %>
+          品　目　名：<%= f.text_field :name,class:"new_item_field" %>
         </div>
         <div class="new_field">
-          基準在庫数：<%= f.text_field :margin %>
+          基準在庫数：<%= f.text_field :margin,class:"new_margin_field" %>
         </div>
       </div>
       <div>
@@ -51,7 +51,7 @@
   <h1>既存アイテム削除</h1>
   <p>販売が終了した品目を削除できます。</p>
   <%= form_with url:item_path(:id),method: :delete,local:true do |f|%>
-    <%= f.collection_select :name, Item.where(user_id:current_user.id), :id, :name, include_blank: "---" %>
+    <%= f.collection_select( :name, Item.where(user_id:current_user.id), :id, :name, {include_blank: "---"},{class:"collection_select"}) %>
     <%= f.submit "削除", class:"btn btn-dark btn-sm btn_destroy" %>
   <%end%>
 </div>

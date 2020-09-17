@@ -47,12 +47,27 @@ width: 60px;
 .new_field{
   margin: 0 20px 10px 0;
 }
+.new_item_field{
+  width: 170px;
+  border: 2px solid lightgray;
+  border-radius: 6px;
+}
+.new_margin_field{
+  width: 170px;
+  border: 2px solid lightgray;
+  border-radius: 6px;
+}
 .btn_setting2{
   height: calc(100% - 10px);
 }
 .destroy{
   margin: 30px 0 0 0;
   text-align: right;
+}
+.collection_select{
+  width: 170px;
+  border: 2px solid lightgray;
+  border-radius: 6px;
 }
 .btn_destroy{
   margin-left: 16px;
