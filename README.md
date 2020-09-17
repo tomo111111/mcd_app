@@ -15,8 +15,8 @@ ID/Pass
 - Store number: 306000
 - Password: mcd306000
 
-
 ＃ 開発環境
+### Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 
 # 利用方法
 ### ログイン/ログアウト
