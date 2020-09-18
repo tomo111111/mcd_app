@@ -38,6 +38,8 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 - また、過去日のデータの修正や、自動算出された翌日以降の納品数の修正も可能です。
 
 ### セールス予測
+<img width="1680" alt="スクリーンショット 2020-09-18 12 01 22" src="https://user-images.githubusercontent.com/60236933/93552417-67895a00-f9ab-11ea-96ac-0e4572dffbba.png">
+
 - 当月、翌月の売上予測を登録します。予測に変更が発生した場合はそのまま上書きが可能です。売上実績は実績入力画面から行います。  
 - ここで入力された値は納品数の計算に使用されます。
 
@@ -49,6 +51,8 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 - 既存アイテム削除：販売品目の変更や期間限定商品の終了に伴い未使用になった原材料を削除できます。
 
 ### 配送日設定
+<img width="1680" alt="スクリーンショット 2020-09-18 12 32 14" src="https://user-images.githubusercontent.com/60236933/93552452-753edf80-f9ab-11ea-86ee-0c210c3c89c6.png">
+
 - 設定項目が2つあります。どちらも納品数の自動計算に影響を与える項目です。  
 - 配送曜日設定：基本の配送パターンを登録できます。店舗ごとに配送パターンが違うため個別に設定ができます。  
 - 特別配送日設定：基本の配送パターンではカバーできない配送日を登録できます。設定した日付が過ぎると自動で削除されます。
