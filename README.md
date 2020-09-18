@@ -34,7 +34,7 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 </div>
 
 - 当日含む前後1週間の納品実績（及び予定）、使用実績、在庫実績を表示しています。  
-- また、コメントボタンを押すことでその日のコメントの登録・閲覧・削除が行えます。（非同期通信）
+- また、コメントボタン（当日のコメントの有無でボタンの種類が変化）を押すことでその日のコメントの登録・閲覧・削除が行えます。（非同期通信）
 
 ### 実績入力
 <img width="1680" alt="スクリーンショット 2020-09-18 11 57 54" src="https://user-images.githubusercontent.com/60236933/93571157-04a9ba00-f9cf-11ea-8be9-11847a7d4c80.png">
@@ -52,6 +52,7 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 <div align="center">
  <img src="https://user-images.githubusercontent.com/60236933/93552058-758aab00-f9aa-11ea-910c-6a5fd95d8c7c.gif" alt="" title="原材料設定DEMO">
 </div>
+
 - 基準在庫数変更：各種原材料の基準在庫数（予備在庫）をそれぞれの店舗に合った最適な値に設定できます。  
 - 新規アイテム追加：新商品の販売に伴い追加される原材料をこちらから登録できます。同時に基準在庫数も登録できます。  
 - 既存アイテム削除：販売品目の変更や期間限定商品の終了に伴い未使用になった原材料を削除できます。
