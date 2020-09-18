@@ -36,7 +36,7 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 
 ### 実績入力
 <div align="center">
- <img width="1680" alt="スクリーンショット 2020-09-18 11 57 54" src="https://user-images.githubusercontent.com/60236933/93550413-4ffba280-f9a6-11ea-9e20-831d8b995c30.png">
+ <img src="https://user-images.githubusercontent.com/60236933/93550413-4ffba280-f9a6-11ea-9e20-831d8b995c30.png" alt="" title="コメントDEMO">
 </div>
 
 - 基本的には当日の使用数、在庫数、売上実績の登録を行います。日付選択後入力画面が表示されます。翌日以降の納品数の計算に使用されます。  
