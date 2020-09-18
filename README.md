@@ -36,7 +36,7 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 - また、コメントボタンを押すことでその日のコメントの登録・閲覧・削除が行えます。（非同期通信）
 
 ### 実績入力
-
+<img width="1680" alt="スクリーンショット 2020-09-18 11 57 54" src="https://user-images.githubusercontent.com/60236933/93571157-04a9ba00-f9cf-11ea-8be9-11847a7d4c80.png">
 
 - 基本的には当日の使用数、在庫数、売上実績の登録を行います。日付選択後入力画面が表示されます。翌日以降の納品数の計算に使用されます。  
 - また、過去日のデータの修正や、自動算出された翌日以降の納品数の修正も可能です。
