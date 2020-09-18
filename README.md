@@ -26,6 +26,7 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 - 店舗別に与えられた番号とパスワードでログインするため全てのデータは店舗ごとに分けて管理されています。
 
 ### 一覧表示（トップページ）
+<img width="1553" alt="スクリーンショット 2020-09-18 11 51 41" src="https://user-images.githubusercontent.com/60236933/93550120-b7652280-f9a5-11ea-8f5d-a35c6945d7df.png">
 - 当日含む前後1週間の納品実績（及び予定）、使用実績、在庫実績を表示しています。  
 - また、コメントボタンを押すことでその日のコメントの登録・閲覧・削除が行えます。（非同期通信）
 
