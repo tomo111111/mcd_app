@@ -29,15 +29,14 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 - 店舗別に与えられた番号とパスワードでログインするため全てのデータは店舗ごとに分けて管理されています。
 
 ### 一覧表示（トップページ）
-![コメントDEMO](https://user-images.githubusercontent.com/60236933/93570470-02932b80-f9ce-11ea-930c-f8335f93a450.gif)
-
+<div align="center">
+ <img src="https://user-images.githubusercontent.com/60236933/93570470-02932b80-f9ce-11ea-930c-f8335f93a450.gif" alt="" title="コメントDEMO">
+</div>
 - 当日含む前後1週間の納品実績（及び予定）、使用実績、在庫実績を表示しています。  
 - また、コメントボタンを押すことでその日のコメントの登録・閲覧・削除が行えます。（非同期通信）
 
 ### 実績入力
-<div align="center">
- <img src="https://user-images.githubusercontent.com/60236933/93550413-4ffba280-f9a6-11ea-9e20-831d8b995c30.png" alt="" title="コメントDEMO">
-</div>
+
 
 - 基本的には当日の使用数、在庫数、売上実績の登録を行います。日付選択後入力画面が表示されます。翌日以降の納品数の計算に使用されます。  
 - また、過去日のデータの修正や、自動算出された翌日以降の納品数の修正も可能です。
