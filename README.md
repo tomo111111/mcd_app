@@ -1,3 +1,5 @@
+![6719](https://user-images.githubusercontent.com/60236933/93545072-7f0c1700-f99a-11ea-9402-a3e1a94a61da.png)
+
 # アプリケーション名
 ### 原材料発注管理アプリ
 
