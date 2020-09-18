@@ -8,8 +8,13 @@ class OrderCalculation
       sale = Sale.find_by(date:date - i,user_id:item.user_id)
       # i日前の在庫情報があれば
       if inventory
-        unit = sale.actual / inventory.use
-        unit_all << unit
+        if sale.actual
+          unit = sale.actual / inventory.use
+          unit_all << unit
+        else
+          unit = sale.plan / inventory.use
+          unit_all << unit
+        end
       # i日前の在庫情報がなければ
       else
         # ケース単価情報が1日分でもあれば
