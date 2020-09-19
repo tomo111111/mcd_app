@@ -8,4 +8,5 @@ class Inventory < ApplicationRecord
     validates :use
     validates :stock
   end
+  validates :date,presence:true
 end
