@@ -34,12 +34,12 @@ def special
   @deliveries = Delivery.where(user_id:current_user.id)
   @specials = Special.where(user_id:current_user.id).order(date: :ASC)
    special = Special.new(spesial_params)
-   if special.valid?
+   if special.date
     special.save
     flash[:notice] = "特別配送日を登録しました"
     redirect_to deliveries_path
    else
-    render :index
+    redirect_to deliveries_path
    end
 end
 

@@ -38,9 +38,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:name])
-    item.destroy
-    flash[:notice] = "品目（#{item.name}）を削除しました"
+    if params[:name] != ""
+      item = Item.find(params[:name])
+      item.destroy
+      flash[:notice] = "品目（#{item.name}）を削除しました"
+    end
     redirect_to new_item_path
   end
 
