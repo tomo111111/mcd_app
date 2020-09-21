@@ -30,7 +30,7 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 
 ### 一覧表示（トップページ）
 <div align="center">
- <img src="https://user-images.githubusercontent.com/60236933/93570470-02932b80-f9ce-11ea-930c-f8335f93a450.gif" alt="" title="コメントDEMO">
+ <img src="https://user-images.githubusercontent.com/60236933/93745087-e55c9800-fc2d-11ea-83a7-a36449444107.gif" alt="" title="コメントDEMO">
 </div>
 
 - 当日含む前後1週間の納品実績（及び予定）、使用実績、在庫実績を表示しています。  
