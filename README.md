@@ -50,7 +50,7 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 
 ### 原材料設定
 <div align="center">
- <img src=" <img src="https://user-images.githubusercontent.com/60236933/93745270-366c8c00-fc2e-11ea-9320-2fca14f2eb27.gif" alt="" title="原材料設定DEMO">
+ <img src="https://user-images.githubusercontent.com/60236933/93745270-366c8c00-fc2e-11ea-9320-2fca14f2eb27.gif" alt="" title="原材料設定DEMO">
 </div>
                                                                                                            
 - 基準在庫数変更：各種原材料の基準在庫数（予備在庫）をそれぞれの店舗に合った最適な値に設定できます。  
