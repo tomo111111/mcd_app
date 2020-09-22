@@ -20,7 +20,12 @@ class SalesController < ApplicationController
 
   def update
     Date.parse(params[:date_1]).end_of_month.day.times do |i|
-      Sale.find_by(date:params["date_#{i + 1}".to_sym]).update(plan:params["plan_#{i + 1}".to_sym],user_id:current_user.id)  
+      sale = Sale.find_by(date:params["date_#{i + 1}".to_sym])
+      if sale
+        sale.update(plan:params["plan_#{i + 1}".to_sym],user_id:current_user.id)  
+      else
+        Sale.create(plan:params["plan_#{i + 1}".to_sym],date:params["date_#{i + 1}".to_sym],user_id:current_user.id)
+      end
     end
     flash[:notice] = "#{Date.parse(params[:date_1]).month}月のセールスプランを更新しました"
     redirect_to sales_path

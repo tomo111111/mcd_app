@@ -1,6 +1,6 @@
 <% this_month = Date.today.since(num.month) %>
 
-<%# その月のレコードが一つもないとき（新規登録時） %>
+  <%# その月のレコードがあるとき %>
 <% if Sale.where(date:this_month.beginning_of_month..this_month.end_of_month,user_id:current_user.id).present? %>
   <%= form_with url:sale_path(0),method: :patch, local: true do |f| %>
   <div class="submit_sales">
@@ -38,7 +38,7 @@
   </table>
 
   <%end%>
-  <%# その月のレコードがあるとき %>
+  <%# その月のレコードが一つもないとき（新規登録時） %>
 <% else %>
   <%= form_with url:sales_path, local: true do |f| %>
   <div class="submit_sales">
