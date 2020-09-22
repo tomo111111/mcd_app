@@ -30,7 +30,7 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 
 ### 一覧表示（トップページ）
 <div align="center">
- <img src="https://user-images.githubusercontent.com/60236933/93570470-02932b80-f9ce-11ea-930c-f8335f93a450.gif" alt="" title="コメントDEMO">
+ <img src="https://user-images.githubusercontent.com/60236933/93745087-e55c9800-fc2d-11ea-83a7-a36449444107.gif" alt="" title="コメントDEMO">
 </div>
 
 - 当日含む前後1週間の納品実績（及び予定）、使用実績、在庫実績を表示しています。  
@@ -50,9 +50,9 @@ Ruby / Ruby on Rails / JavaScript / MySQL / GitHub / Heroku / Visual Studio Code
 
 ### 原材料設定
 <div align="center">
- <img src="https://user-images.githubusercontent.com/60236933/93552058-758aab00-f9aa-11ea-910c-6a5fd95d8c7c.gif" alt="" title="原材料設定DEMO">
+ <img src="https://user-images.githubusercontent.com/60236933/93745270-366c8c00-fc2e-11ea-9320-2fca14f2eb27.gif" alt="" title="原材料設定DEMO">
 </div>
-
+                                                                                                           
 - 基準在庫数変更：各種原材料の基準在庫数（予備在庫）をそれぞれの店舗に合った最適な値に設定できます。  
 - 新規アイテム追加：新商品の販売に伴い追加される原材料をこちらから登録できます。同時に基準在庫数も登録できます。  
 - 既存アイテム削除：販売品目の変更や期間限定商品の終了に伴い未使用になった原材料を削除できます。
